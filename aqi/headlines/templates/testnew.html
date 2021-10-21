@@ -1,0 +1,113 @@
+<!doctype html>
+<html>
+
+
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We" crossorigin="anonymous">
+    <title>PROJECT</title>
+
+</head>
+
+<body style="background-color:#e3f2fd;;">
+    <div class="Ubuntu Mono">
+        </br>
+        <div class="container">
+            <div class="bg-white">
+                <div class="container">
+                    </br>
+                    <div class="row">
+                        <div class="col-6">
+                            <div class="container-fluid">
+                                <b class="fs-3 text-primary "> ☁ AQI PROJECT</b>
+                            </div>
+                        </div>
+                    </div>
+                    </br>
+                    <form class="form-inline" method="POST" action="/">
+                        <div class="row">
+
+                            <div class="col-5">
+                                <select name="comp_select" class="form-select form-select-sm"
+                                    aria-label=".form-select-sm example">
+                                    <option selected>Please select</option>
+                                    {% for o in data %}
+                                    {% if o.dustboy_pv == "45" %}
+                                    <option value="{{ o.dustboy_id  }}">{{ o.dustboy_name_th }}</option>
+                                    {% endif %}
+                                    {% endfor %}
+                                </select>
+                            </div>
+
+                            <div class="col-1">
+                                <button type="submit" class="btn btn-primary">GO</button>
+                            </div>
+
+                            <div class="col-6">
+
+                            </div>
+
+                            <div class="col-6">
+                                <div>
+                                    </br>
+                                    <div class="card border-dark">
+                                        <div class="card-header">
+                                            <b>Chiang Rai Air Quality Index</b>
+                                        </div>
+                                        <div class="card-body">
+                                            <b class="card-title">{{ air.dustboy_name }} {{ airno.dustboy_name_th }}</b>
+                                            </br>
+                                            <p class="card-text">PM2.5 = {{ air.pm25 }} {{null}}</p>
+                                            <p class="card-text">PM10 = {{ air.pm10 }} {{null}}</p>
+                                            <p class="card-text"><small class="text-muted">Last updated
+                                                    :{{ air.log_datetime }} {{null}}</small></p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-6">
+                                <center>
+                                    <p>{{air.th_title}}</p>
+                                    {% if air.th_title == "คุณภาพอากาศดีมาก" %}
+                                    <img src="https://www.cmuccdc.org/template/img/ccdc-01-th.png" width="300"
+                                        height="200">
+                                    {% elif air.th_title == "คุณภาพอากาศดี" %}
+                                    <img src="https://www.cmuccdc.org/template/img/ccdc-02-th.png" width="300"
+                                        height="200">
+                                    {% elif air.th_title == "คุณภาพอากาศปานกลาง" %}
+                                    <img src="https://www.cmuccdc.org/template/img/ccdc-03-th.png" width="300"
+                                        height="200">
+                                    {% elif air.th_title == "คุณภาพอากาศมีผลกระทบต่อสุขภาพ" %}
+                                    <img src="https://www.cmuccdc.org/template/img/ccdc-04-th.png" width="300"
+                                        height="200">
+                                    {% elif air.th_title == "คุณภาพอากาศมีผลกระทบต่อสุขภาพมาก" %}
+                                    <img src="https://www.cmuccdc.org/template/img/ccdc-05-th.png" width="300"
+                                        height="200">
+                                    {% elif null == "no data" %}
+                                    no data
+                                    {% endif %}
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-6">
+                                
+                                    <div class="card-body">
+                                        <h5 class="card-title">{{air.th_title}}</h5>
+                                        <p class="card-text">{{air.th_caption}}</p>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                    </form>
+                    </br>
+                </div>
+
+            </div>
+        </div>
+      
+    </div>
+</body>
+
+</html>
