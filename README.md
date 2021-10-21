@@ -11,4 +11,4 @@ pip install Flask\
 pip install feedparser\
 pip install requests\
 set FLASK_APP=testnew\
-flask run\
+flask run
